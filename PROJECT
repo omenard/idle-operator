@@ -8,6 +8,13 @@ layout:
 plugins:
   manifests.sdk.operatorframework.io/v2: {}
   scorecard.sdk.operatorframework.io/v2: {}
+multigroup: true
 projectName: idle-operator
 repo: github.com/omenard/idle-operator
+resources:
+- controller: true
+  group: core
+  kind: Pod
+  path: k8s.io/api/core/v1
+  version: v1
 version: "3"
