@@ -9,5 +9,5 @@ plugins:
   manifests.sdk.operatorframework.io/v2: {}
   scorecard.sdk.operatorframework.io/v2: {}
 projectName: idle-operator
-repo: github.com/omenard/idle-operator.git
+repo: github.com/omenard/idle-operator
 version: "3"

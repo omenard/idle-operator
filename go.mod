@@ -1,4 +1,4 @@
-module github.com/omenard/idle-operator.git
+module github.com/omenard/idle-operator
 
 go 1.19
 
