@@ -1,0 +1,27 @@
+# permissions for end users to view schedules.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: schedule-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: idle-operator
+    app.kubernetes.io/part-of: idle-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: schedule-viewer-role
+rules:
+- apiGroups:
+  - api.core.closeloop.net
+  resources:
+  - schedules
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - api.core.closeloop.net
+  resources:
+  - schedules/status
+  verbs:
+  - get

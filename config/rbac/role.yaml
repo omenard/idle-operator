@@ -6,6 +6,32 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
+  - api.core.closeloop.net
+  resources:
+  - schedules
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - api.core.closeloop.net
+  resources:
+  - schedules/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - api.core.closeloop.net
+  resources:
+  - schedules/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
   - ""
   resources:
   - pods

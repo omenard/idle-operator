@@ -5,10 +5,10 @@
 domain: core.closeloop.net
 layout:
 - go.kubebuilder.io/v3
+multigroup: true
 plugins:
   manifests.sdk.operatorframework.io/v2: {}
   scorecard.sdk.operatorframework.io/v2: {}
-multigroup: true
 projectName: idle-operator
 repo: github.com/omenard/idle-operator
 resources:
@@ -17,4 +17,13 @@ resources:
   kind: Pod
   path: k8s.io/api/core/v1
   version: v1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: core.closeloop.net
+  group: api
+  kind: Schedule
+  path: github.com/omenard/idle-operator/apis/api/v1alpha1
+  version: v1alpha1
 version: "3"

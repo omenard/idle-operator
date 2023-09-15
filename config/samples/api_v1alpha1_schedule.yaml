@@ -1,0 +1,23 @@
+apiVersion: api.core.closeloop.net/v1alpha1
+kind: Schedule
+metadata:
+  labels:
+    app.kubernetes.io/name: schedule
+    app.kubernetes.io/instance: schedule-sample
+    app.kubernetes.io/part-of: idle-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: idle-operator
+  name: sample
+spec:
+  enable: true
+  timezone: utc
+  days:
+    - monday
+    - tuesday
+  years:
+    - 2023
+    - 2024
+  deactivateTime: "06:00"
+  activateTime: "18:00"
+  dependencies:
+    - google.com

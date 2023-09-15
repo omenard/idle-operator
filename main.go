@@ -31,7 +31,9 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
+	apiv1alpha1 "github.com/omenard/idle-operator/apis/api/v1alpha1"
 	"github.com/omenard/idle-operator/controllers"
+	apicontrollers "github.com/omenard/idle-operator/controllers/api"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -43,6 +45,7 @@ var (
 func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
 
+	utilruntime.Must(apiv1alpha1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 
@@ -92,6 +95,13 @@ func main() {
 		Scheme: mgr.GetScheme(),
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "Pod")
+		os.Exit(1)
+	}
+	if err = (&apicontrollers.ScheduleReconciler{
+		Client: mgr.GetClient(),
+		Scheme: mgr.GetScheme(),
+	}).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "Schedule")
 		os.Exit(1)
 	}
 	//+kubebuilder:scaffold:builder
